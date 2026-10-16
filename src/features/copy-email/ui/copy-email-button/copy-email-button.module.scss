@@ -1,0 +1,48 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  padding: 0 0 6px;
+  border: 0;
+  border-bottom: 1px solid #7b7c73;
+  background: transparent;
+  color: inherit;
+  font-size: clamp(14px, 1.65vw, 23px);
+  letter-spacing: -0.03em;
+  text-align: left;
+  transition: color 180ms ease, transform 160ms var(--ease-out);
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &[data-status="copied"],
+  &[data-status="error"] {
+    .address { visibility: hidden; }
+  }
+}
+
+.label {
+  position: relative;
+}
+
+.feedback {
+  position: absolute;
+  inset: 0;
+  white-space: nowrap;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover { color: #b1b2a8; }
+}
+
+@media (max-width: 640px) {
+  .button {
+    font-size: 21px;
+    gap: 20px;
+  }
+}

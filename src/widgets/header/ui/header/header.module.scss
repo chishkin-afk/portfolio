@@ -1,0 +1,101 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--header-height);
+  padding: 18px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: var(--paper);
+  color: var(--ink);
+  border-bottom: 1px solid rgb(23 23 22 / 12%);
+  pointer-events: none;
+
+  > a,
+  nav {
+    pointer-events: auto;
+  }
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .header {
+    background: rgb(233 231 226 / 88%);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+.mark {
+  margin-right: 9px;
+  font-size: 30px;
+  line-height: 1;
+}
+.dot {
+  color: inherit;
+}
+.nav {
+  display: flex;
+  gap: 36px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.nav a,
+.contact {
+  transition: opacity 180ms ease;
+}
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.skip {
+  position: fixed;
+  top: -100px;
+  left: 12px;
+  padding: 14px;
+  z-index: 10;
+  background: var(--ink);
+  color: var(--paper);
+  &:focus-visible {
+    top: 12px;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav a:hover,
+  .contact:hover {
+    opacity: 0.55;
+  }
+}
+@media (max-width: 640px) {
+  .header {
+    padding-block: 12px;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+  .brand {
+    font-size: 20px;
+  }
+  .mark {
+    font-size: 25px;
+  }
+  .nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 8px;
+  }
+  .contact {
+    gap: 12px;
+    font-size: 10px;
+  }
+}

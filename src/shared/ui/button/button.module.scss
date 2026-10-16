@@ -1,0 +1,83 @@
+.button {
+  min-height: 54px;
+  padding: 17px 23px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 34px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 160ms var(--ease-out);
+  &:active {
+    transform: scale(0.97);
+  }
+  svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    transition: transform 180ms var(--ease-out);
+  }
+}
+.solid {
+  color: var(--paper);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+}
+.outline {
+  border: 1px solid currentColor;
+  background: transparent;
+}
+.circle {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-color: var(--ink);
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    bottom: 0;
+    width: 220%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--ink);
+    transform: translate(-101%, 101%);
+    transition: transform 1s var(--ease-out);
+    pointer-events: none;
+  }
+
+  &:focus-visible {
+    color: var(--paper);
+    transition: none;
+
+    &::before {
+      transform: translate(-30%, 30%);
+      transition: none;
+    }
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .solid:hover {
+    background: #3c3c39;
+  }
+  .outline:not(.circle):hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .circle:hover {
+    color: var(--paper);
+
+    &::before {
+      transform: translate(-30%, 30%);
+    }
+  }
+  .button:hover svg {
+    transform: translate(2px, -2px);
+  }
+}
