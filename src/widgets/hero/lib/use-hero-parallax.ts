@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 export function useHeroParallax() {
   const sectionRef = useRef<HTMLElement>(null);
   const objectRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
+  const titleRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;

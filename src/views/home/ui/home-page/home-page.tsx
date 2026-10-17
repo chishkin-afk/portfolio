@@ -5,6 +5,8 @@ import { Projects } from "@/widgets/projects/ui/projects/projects";
 import { Timeline } from "@/widgets/timeline/ui/timeline/timeline";
 import { Contact } from "@/widgets/contact/ui/contact/contact";
 import { Footer } from "@/widgets/footer/ui/footer/footer";
+import { Questions } from "@/shared/ui/questions/questions";
+import { homeQuestions } from "../../model/questions";
 
 export function HomePage() {
   return (
@@ -15,6 +17,7 @@ export function HomePage() {
         <Features />
         <Projects />
         <Timeline />
+        <Questions items={homeQuestions} title="Вопросы о разработке сайтов" index="05" />
         <Contact />
       </main>
       <Footer />

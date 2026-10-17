@@ -1,30 +1,18 @@
 import { HomePage } from "@/views/home/ui/home-page/home-page";
-import { contacts } from "@/shared/config/contacts";
 import { site } from "@/shared/config/site";
+import { pageMetadata } from "@/shared/lib/seo/page-metadata";
+import { siteEntities } from "@/shared/lib/seo/site-entities";
+
+export const metadata = pageMetadata({
+  title: site.title,
+  description: site.description,
+  path: "/",
+});
 
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Person",
-      "@id": `${site.url}/#person`,
-      name: site.author,
-      url: `${site.url}/`,
-      jobTitle: "Веб-разработчик",
-      description: "Создаю сайты и веб-приложения под ключ вместе с командой.",
-      email: contacts.email,
-      sameAs: [contacts.telegram, contacts.github],
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${site.url}/#website`,
-      url: `${site.url}/`,
-      name: site.name,
-      alternateName: "Егор Чишкин — создание сайтов",
-      description: site.description,
-      inLanguage: "ru-RU",
-      publisher: { "@id": `${site.url}/#person` },
-    },
+    ...siteEntities,
     {
       "@type": "WebPage",
       "@id": `${site.url}/#webpage`,
@@ -33,13 +21,12 @@ const structuredData = {
       description: site.description,
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${site.url}/#website` },
-      about: { "@id": `${site.url}/#person` },
       mainEntity: { "@id": `${site.url}/#service` },
     },
     {
       "@type": "Service",
       "@id": `${site.url}/#service`,
-      name: "Создание сайтов на заказ под ключ",
+      name: "Разработка сайтов под ключ",
       description: site.description,
       url: `${site.url}/#about`,
       serviceType: [
@@ -48,7 +35,6 @@ const structuredData = {
         "Разработка многостраничных сайтов",
         "Разработка веб-приложений",
       ],
-      provider: { "@id": `${site.url}/#person` },
     },
   ],
 };

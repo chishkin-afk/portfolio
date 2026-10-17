@@ -1,0 +1,98 @@
+.main { min-width: 0; }
+.hero {
+  padding: 32px var(--gutter) 48px;
+  h1 {
+    max-width: 1080px;
+    margin-block: 24px;
+    font-size: clamp(38px, 6.5vw, 92px);
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -0.06em;
+    overflow-wrap: anywhere;
+  }
+}
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  line-height: 1.6;
+  a { text-decoration: underline; text-underline-offset: 3px; }
+}
+.eyebrow {
+  margin-top: 40px;
+  font: 10px/1.7 monospace;
+  letter-spacing: 0.06em;
+}
+.lead {
+  max-width: 660px;
+  margin-bottom: 32px;
+  font-size: clamp(17px, 2vw, 24px);
+  line-height: 1.6;
+}
+.section {
+  margin-inline: var(--gutter);
+  padding-block: 40px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  border-bottom: 1px solid var(--line);
+  h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 500; line-height: 1.2; letter-spacing: -0.045em; }
+  h3 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; }
+  p, li { font-size: 15px; line-height: 1.9; }
+  p { color: #55554f; }
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+}
+.copy { display: grid; gap: 20px; }
+.textLink { width: fit-content; border-bottom: 1px solid; line-height: 1.8; font-size: 14px; }
+.related {
+  padding: 0 var(--gutter) 64px;
+  h2 { font-size: 28px; font-weight: 500; letter-spacing: -0.04em; }
+  nav { display: flex; flex-wrap: wrap; gap: 20px 36px; margin-top: 28px; }
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 6px;
+  }
+}
+.relatedArrow {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  background: var(--ink);
+  color: var(--paper);
+  svg { width: 16px; height: 16px; }
+}
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 60px var(--gutter);
+  > div { flex: 1 1 420px; }
+  h2 { font-size: clamp(30px, 4vw, 52px); font-weight: 500; letter-spacing: -0.05em; }
+  p { margin-top: 16px; font-size: 14px; line-height: 1.8; }
+  > a:last-child { font-size: 14px; overflow-wrap: anywhere; }
+}
+@media (max-width: 800px) {
+  .section { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 640px) {
+  .hero { padding-bottom: 40px; }
+  .eyebrow { margin-top: 40px; }
+  .section { padding-block: 36px; }
+  .grid { grid-template-columns: 1fr; gap: 28px; }
+  .related { padding-bottom: 44px; }
+  .contact { padding-block: 44px; }
+}

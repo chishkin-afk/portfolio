@@ -1,14 +1,20 @@
 import { site } from "@/shared/config/site";
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./styles/globals.scss";
+
+const manrope = localFont({
+  src: "../../public/fonts/manrope-variable.ttf",
+  variable: "--font-manrope",
+  display: "swap",
+  weight: "200 800",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: site.title,
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: site.author, url: site.url }],
-  creator: site.author,
   keywords: [
     "создание сайтов на заказ",
     "разработка сайтов на заказ",
@@ -37,11 +43,8 @@ export const metadata: Metadata = {
     "частный веб-разработчик",
     "веб-разработчик фрилансер",
     "портфолио веб-разработчика",
-    "Егор Чишкин",
-    "Чишкин разработчик",
     "CHISHKIN",
   ],
-  alternates: { canonical: "/" },
   robots: {
     index: true,
     follow: true,
@@ -54,13 +57,16 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
-    yandex: process.env.YANDEX_SITE_VERIFICATION || undefined,
+    // При вставке TXT-строки из DNS убираем префикс: в HTML нужен только токен.
+    google: process.env.GOOGLE_SITE_VERIFICATION?.trim().replace(
+      /^google-site-verification=/,
+      "",
+    ) || undefined,
+    yandex: process.env.YANDEX_SITE_VERIFICATION?.trim() || undefined,
   },
   openGraph: {
     title: site.title,
     description: site.description,
-    url: site.url,
     siteName: site.name,
     locale: "ru_RU",
     type: "website",
@@ -76,7 +82,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru">
+    <html lang="ru" className={manrope.variable}>
       <body>{children}</body>
     </html>
   );

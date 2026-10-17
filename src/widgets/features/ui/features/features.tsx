@@ -2,6 +2,9 @@ import { SectionLabel } from "@/shared/ui/section-label/section-label";
 import { services } from "../../model/services";
 import { ServiceItem } from "../service-item/service-item";
 import styles from "./features.module.scss";
+import Link from "next/link";
+import { servicePages, servicePath } from "@/entities/service/model/services";
+import { Arrow } from "@/shared/ui/arrow/arrow";
 
 export function Features() {
   return (
@@ -24,7 +27,7 @@ export function Features() {
           </h2>
           <div className={styles.description}>
             <p>
-              Привет, я Егор Чишкин, веб-разработчик. Вместе с командой создаю
+              Я Егор, веб-разработчик. Вместе с командой создаю
               сайты на заказ: лендинги, корпоративные и многостраничные сайты,
               веб-приложения. Берём на себя дизайн, разработку и запуск под ключ.
             </p>
@@ -33,6 +36,18 @@ export function Features() {
               двигаемся к запуску. Вы всегда знаете, на каком этапе ваш проект.
             </p>
           </div>
+        </div>
+      </div>
+      <div className={styles.offers} id="services">
+        <h2>Что можно заказать</h2>
+        <div className={styles.offerList}>
+          {servicePages.map((service) => (
+            <Link key={service.slug} href={servicePath(service.slug)} className={styles.offer}>
+              <h3>{service.name}<Arrow /></h3>
+              <p>{service.summary}</p>
+              <span>Подробнее об услуге</span>
+            </Link>
+          ))}
         </div>
       </div>
       <div className={styles.stack}>

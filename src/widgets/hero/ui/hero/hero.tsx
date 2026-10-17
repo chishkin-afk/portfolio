@@ -31,13 +31,9 @@ export function Hero() {
         </p>
       </div>
       <div className={styles.stage}>
-        <h1 className={styles.title} id="hero-title" ref={titleRef}>
+        <p className={styles.title} ref={titleRef} aria-hidden="true">
           CHISHKIN
-          <span className="sr-only">
-            {" "}
-            — Егор Чишкин, разработка сайтов и веб-приложений
-          </span>
-        </h1>
+        </p>
         <div className={styles.object} ref={objectRef}>
           <Image
             src="/images/chrome-asterisk.png"
@@ -58,12 +54,12 @@ export function Hero() {
       </div>
       <div className={styles.bottomline}>
         <div>
-          <p className={styles.intro}>
-            Создание сайтов на заказ
+          <h1 className={styles.intro} id="hero-title">
+            Разработка сайтов
             <br />под ключ.
-          </p>
+          </h1>
           <p className={styles.description}>
-            Лендинги, сайты для бизнеса и веб-приложения.
+            Сайты на заказ и веб-приложения.
             <br />От дизайна до разработки и запуска.
           </p>
         </div>
@@ -78,7 +74,7 @@ export function Hero() {
       <div className={styles.footnote}>
         <span>ПОРТФОЛИО / 2026</span>
         <span>ОТ ПЕРВОЙ ИДЕИ ДО ЗАПУСКА В СЕТЬ</span>
-        <span>01 — 05</span>
+        <span>01 — 06</span>
       </div>
     </section>
   );

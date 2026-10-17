@@ -12,7 +12,7 @@ export function Contact() {
       aria-labelledby="contact-title"
     >
       <div className={styles.top}>
-        <SectionLabel index="05">Следующий проект — ваш</SectionLabel>
+        <SectionLabel index="06">Следующий проект — ваш</SectionLabel>
         <span>НАЧНЁМ С ПРИВЕТА</span>
       </div>
       <a className={styles.heading} href={contacts.emailHref}>
