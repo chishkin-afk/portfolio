@@ -58,9 +58,13 @@ export function Hero() {
       </div>
       <div className={styles.bottomline}>
         <div>
+          <p className={styles.intro}>
+            Создание сайтов на заказ
+            <br />под ключ.
+          </p>
           <p className={styles.description}>
-            Превращаю ваши идеи в быстрые
-            <br />и продуманные цифровые продукты.
+            Лендинги, сайты для бизнеса и веб-приложения.
+            <br />От дизайна до разработки и запуска.
           </p>
         </div>
         <div className={styles.actions}>
