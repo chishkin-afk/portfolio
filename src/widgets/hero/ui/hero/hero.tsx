@@ -14,7 +14,7 @@ export function Hero() {
       ref={sectionRef}
       aria-labelledby="hero-title"
     >
-      <div className={styles.topline}>
+      <div className={styles.topline} data-reveal>
         <p>
           НЕЗАВИСИМЫЙ
           <br />
@@ -30,7 +30,7 @@ export function Hero() {
           НИЧЕГО ЛИШНЕГО.
         </p>
       </div>
-      <div className={styles.stage}>
+      <div className={styles.stage} data-reveal>
         <p className={styles.title} ref={titleRef} aria-hidden="true">
           CHISHKIN
         </p>
@@ -52,7 +52,7 @@ export function Hero() {
           DIGITAL CRAFT — VOL. 01
         </span>
       </div>
-      <div className={styles.bottomline}>
+      <div className={styles.bottomline} data-reveal>
         <div>
           <h1 className={styles.intro} id="hero-title">
             Разработка сайтов
@@ -71,7 +71,7 @@ export function Hero() {
           </a>
         </div>
       </div>
-      <div className={styles.footnote}>
+      <div className={styles.footnote} data-reveal>
         <span>ПОРТФОЛИО / 2026</span>
         <span>ОТ ПЕРВОЙ ИДЕИ ДО ЗАПУСКА В СЕТЬ</span>
         <span>01 — 06</span>

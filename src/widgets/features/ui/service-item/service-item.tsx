@@ -14,7 +14,7 @@ export function ServiceItem({
   tag,
 }: ServiceItemProps) {
   return (
-    <article className={styles.item}>
+    <article className={styles.item} data-reveal>
       <div className={styles.top}>
         <span>{number}</span>
         <span aria-hidden="true">↗</span>

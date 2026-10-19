@@ -9,8 +9,8 @@ export function Timeline() {
       id="timeline"
       aria-labelledby="timeline-title"
     >
-      <SectionLabel index="04">Сроки разработки</SectionLabel>
-      <div className={styles.heading}>
+      <SectionLabel index="04">Цены и сроки</SectionLabel>
+      <div className={styles.heading} data-reveal>
         <h2 id="timeline-title">
           У каждой задачи
           <br />

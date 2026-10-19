@@ -21,7 +21,7 @@ export function Header({ homePage = true }: { homePage?: boolean }) {
         <a href={`${home}#about`}>Подход</a>
         <a href={`${home}#services`}>Услуги</a>
         <a href={`${home}#projects`}>Проекты</a>
-        <a href={`${home}#timeline`}>Сроки</a>
+        <a href={`${home}#timeline`}>Цены и сроки</a>
       </nav>
       <a
         className={styles.contact}

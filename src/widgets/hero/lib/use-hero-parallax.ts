@@ -14,40 +14,64 @@ export function useHeroParallax() {
     if (!section || !object || !title) return;
 
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-    let visible = true;
+    const native = CSS.supports("animation-timeline", "scroll(root block)")
+      && CSS.supports("animation-range", "0px 100px");
+    let start = 0;
+    let height = 0;
+    let lastProgress = -1;
     const paint = () => {
-      frame = 0;
       if (preference.matches) {
         object.style.transform = "none";
         title.style.transform = "none";
+        lastProgress = -1;
         return;
       }
-      const progress = Math.max(
-        0,
-        Math.min(-section.getBoundingClientRect().top, section.offsetHeight),
-      );
+      const progress = Math.max(0, Math.min(window.scrollY - start, height));
+      if (progress === lastProgress) return;
+      lastProgress = progress;
       object.style.transform = `translate3d(0, ${-progress * 0.52}px, 0) rotate(${-progress * 0.055}deg)`;
       title.style.transform = `translate3d(0, ${-progress * 0.16}px, 0)`;
     };
-    const requestPaint = () => {
-      if (!frame && visible) frame = requestAnimationFrame(paint);
+    const measure = () => {
+      start = section.getBoundingClientRect().top + window.scrollY;
+      height = section.offsetHeight;
+      if (native) {
+        for (const element of [object, title]) {
+          element.style.setProperty("--parallax-start", `${start}px`);
+          element.style.setProperty("--parallax-end", `${start + height}px`);
+        }
+        object.style.setProperty("--parallax-y", `${-height * 0.52}px`);
+        object.style.setProperty("--parallax-rotation", `${-height * 0.055}deg`);
+        title.style.setProperty("--parallax-y", `${-height * 0.16}px`);
+        section.dataset.parallax = "native";
+      } else {
+        lastProgress = -1;
+        paint();
+      }
     };
-    const observer = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      if (visible) requestPaint();
-    });
+
+    // Native timelines stay in sync with browser scrolling, even under JS load.
+    // The fallback uses cached geometry and writes immediately, without easing.
+    const observer = new ResizeObserver(measure);
     observer.observe(section);
-    window.addEventListener("scroll", requestPaint, { passive: true });
-    window.addEventListener("resize", requestPaint, { passive: true });
-    preference.addEventListener("change", paint);
-    paint();
+    if (!native) {
+      window.addEventListener("scroll", paint, { passive: true });
+      preference.addEventListener("change", paint);
+    }
+    window.addEventListener("resize", measure, { passive: true });
+    measure();
     return () => {
-      cancelAnimationFrame(frame);
       observer.disconnect();
-      window.removeEventListener("scroll", requestPaint);
-      window.removeEventListener("resize", requestPaint);
+      window.removeEventListener("scroll", paint);
+      window.removeEventListener("resize", measure);
       preference.removeEventListener("change", paint);
+      delete section.dataset.parallax;
+      for (const element of [object, title]) {
+        element.style.removeProperty("transform");
+        for (const property of ["--parallax-start", "--parallax-end", "--parallax-y", "--parallax-rotation"]) {
+          element.style.removeProperty(property);
+        }
+      }
     };
   }, []);
 

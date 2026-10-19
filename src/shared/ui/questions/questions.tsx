@@ -14,10 +14,10 @@ export function Questions({
     <section className={styles.section} aria-labelledby="faq-title" id="faq">
       <SectionLabel index={index}>Вопросы и ответы</SectionLabel>
       <div>
-        <h2 id="faq-title">{title}</h2>
+        <h2 id="faq-title" data-reveal>{title}</h2>
         <div className={styles.items}>
           {items.map(({ question, answer }) => (
-            <details key={question} className={styles.item}>
+            <details key={question} className={styles.item} data-reveal>
               <summary>{question}</summary>
               <p>{answer}</p>
             </details>

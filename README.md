@@ -20,6 +20,7 @@ npm run dev
 - Контакты: `src/shared/config/contacts.ts`.
 - Проекты: `src/entities/project/model/projects.ts`.
 - Типы проектов и сроки: `src/features/project-estimate/model/estimates.ts`.
+- Стартовые цены на главной: `price` в `src/features/project-estimate/model/estimates.ts`.
 - Услуги: `src/widgets/features/model/services.ts`.
 - Страницы услуг и их содержание: `src/entities/service/model/services.ts`.
 - Текст обо мне: `src/widgets/features/ui/features/features.tsx`.
@@ -74,7 +75,7 @@ Meta keywords не влияет на ранжирование Google. Настр
 понимать сайт, но не гарантируют индексацию или место в топе. Проверка прав на домен
 и отправка sitemap выполняются в аккаунтах владельца после публикации.
 
-Основной контент отрисовывается сервером. Клиентский JavaScript используется в hero и выборе сроков. Параллакс обновляет transform через requestAnimationFrame, использует пассивный scroll listener, отключается за пределами экрана и учитывает prefers-reduced-motion.
+Основной контент отрисовывается сервером. В блоке «Цены и сроки» показаны стартовые цены всех трёх форматов и подробности выбранного проекта. Параллакс привязан к прокрутке через CSS scroll timeline; в браузерах без поддержки используется пассивный обработчик scroll с заранее рассчитанной геометрией. Элементы плавно появляются один раз при входе в экран через IntersectionObserver и Web Animations API. Без JavaScript контент остаётся видимым; prefers-reduced-motion отключает движение.
 
 Превью ссылки: `src/app/opengraph-image.png`, исходник — `public/images/social-preview.svg`.
 После редактирования SVG обновите PNG:

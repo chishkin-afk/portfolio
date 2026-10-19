@@ -11,11 +11,11 @@ export function Contact() {
       id="contact"
       aria-labelledby="contact-title"
     >
-      <div className={styles.top}>
+      <div className={styles.top} data-reveal>
         <SectionLabel index="06">Следующий проект — ваш</SectionLabel>
         <span>НАЧНЁМ С ПРИВЕТА</span>
       </div>
-      <a className={styles.heading} href={contacts.emailHref}>
+      <a className={styles.heading} href={contacts.emailHref} data-reveal>
         <h2 id="contact-title">
           Есть идея?
           <br />
@@ -23,7 +23,7 @@ export function Contact() {
         </h2>
         <Arrow />
       </a>
-      <div className={styles.bottom}>
+      <div className={styles.bottom} data-reveal>
         <p>
           Расскажите, что хотите сделать.
           <br />

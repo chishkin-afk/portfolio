@@ -13,8 +13,8 @@ export function ProjectEstimate() {
 
   return (
     <div className={styles.estimate}>
-      <div className={styles.selection}>
-        <p className={styles.label}>ВЫБЕРИТЕ ФОРМАТ ПРОЕКТА</p>
+      <div className={styles.selection} data-reveal>
+        <p className={styles.label}>Выберите формат проекта</p>
         <div
           className={styles.options}
           role="group"
@@ -29,7 +29,10 @@ export function ProjectEstimate() {
               onClick={() => setSelected(index)}
             >
               <span>{item.number}</span>
-              <span>{item.title}</span>
+              <span className={styles.optionCopy}>
+                <span>{item.title}</span>
+                <span className={styles.optionPrice}>от {item.price} ₽</span>
+              </span>
               <span className={styles.indicator} aria-hidden="true">
                 {selected === index ? <Arrow /> : "+"}
               </span>
@@ -37,21 +40,22 @@ export function ProjectEstimate() {
           ))}
         </div>
         <p className={styles.note}>
-          Это ориентиры для разработки при готовом контенте.
+          Стартовые цены и сроки — при готовом контенте.
           <br />
-          Точные сроки определим после обсуждения задачи.
+          Точную стоимость и сроки определим после обсуждения задачи.
         </p>
       </div>
-      <div className={styles.result} aria-live="polite" aria-atomic="true">
-        <div className={styles.duration}>
-          {estimate.prefix ? (
-            <span className={styles.prefix}>{estimate.prefix}</span>
-          ) : null}{" "}
-          <span key={estimate.id} className={styles.value}>
-            {estimate.duration}
-          </span>{" "}
-          <span className={styles.unit}>{estimate.unit}</span>
+      <div className={styles.result} data-reveal aria-live="polite" aria-atomic="true">
+        <div className={styles.price}>
+          <span className={styles.prefix}>от</span>{" "}
+          <span className={styles.value}>{estimate.price}</span>{" "}
+          <span className={styles.unit}>₽</span>
         </div>
+        <p className={styles.duration}>
+          <strong className={styles.durationValue}>
+            {estimate.duration} {estimate.unit}
+          </strong>
+        </p>
         <h3>{estimate.heading}</h3>
         <p className={styles.description}>{estimate.description}</p>
         <ul className={styles.includes}>

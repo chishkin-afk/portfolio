@@ -5,7 +5,7 @@ import styles from "./project-card.module.scss";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className={styles.project}>
+    <article className={styles.project} data-reveal>
       <a
         className={styles.preview}
         href={project.url}

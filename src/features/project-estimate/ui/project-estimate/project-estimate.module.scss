@@ -8,9 +8,9 @@
   padding-top: 16px;
 }
 .label {
-  font: 8px/1.5 monospace;
+  font: 500 12px/1.5 var(--font-manrope), Arial, sans-serif;
   color: var(--muted);
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
   margin-bottom: 23px;
 }
 .options {
@@ -33,7 +33,7 @@
     color 180ms ease,
     padding 180ms var(--ease-out);
   > span:first-child {
-    font: 8px monospace;
+    font: 500 10px/1.5 var(--font-manrope), Arial, sans-serif;
   }
   .indicator {
     width: 26px;
@@ -67,6 +67,16 @@
   color: var(--muted);
   margin-top: 24px;
 }
+.optionCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.optionPrice {
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+}
 .result {
   min-height: 390px;
   padding-left: 30px;
@@ -84,22 +94,40 @@
     padding-block: 13px;
   }
 }
-.duration {
+.price {
   display: flex;
   align-items: baseline;
-  gap: clamp(18px, 2vw, 28px);
+  gap: clamp(10px, 1.4vw, 20px);
   line-height: 0.95;
+  white-space: nowrap;
+}
+.duration {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+  width: fit-content;
+  max-width: 100%;
+  margin-block: 24px;
+  color: var(--ink);
+}
+.durationValue {
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 .prefix {
-  font-size: clamp(28px, 3vw, 40px);
-  letter-spacing: -0.03em;
+  font: 500 12px/1.5 var(--font-manrope), Arial, sans-serif;
+  letter-spacing: 0;
 }
 .value {
-  font-size: clamp(80px, 9vw, 136px);
+  font-size: clamp(54px, 6.5vw, 104px);
   letter-spacing: -0.06em;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  animation: enter 220ms var(--ease-out);
 }
 .unit {
   font-size: 23px;
@@ -122,16 +150,6 @@
     content: "+";
     color: var(--muted);
     margin-right: 12px;
-  }
-}
-@keyframes enter {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 @media (hover: hover) and (pointer: fine) {
@@ -166,7 +184,7 @@
     border-top: 1px solid var(--line);
   }
   .value {
-    font-size: 105px;
+    font-size: clamp(54px, 13vw, 82px);
   }
   .unit {
     font-size: 25px;

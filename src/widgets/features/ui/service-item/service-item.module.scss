@@ -28,7 +28,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font: 10px monospace;
+  font: 500 10px/1.5 var(--font-manrope), Arial, sans-serif;
   color: #92928b;
   span:last-child {
     font-size: 25px;
@@ -39,8 +39,8 @@
   display: block;
   margin-top: auto;
   padding-top: 36px;
-  font: 8px monospace;
-  letter-spacing: 0.1em;
+  font: 500 10px/1.5 var(--font-manrope), Arial, sans-serif;
+  letter-spacing: 0;
   color: #92928b;
 }
 @media (max-width: 800px) {

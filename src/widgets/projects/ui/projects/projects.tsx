@@ -11,7 +11,7 @@ export function Projects() {
       aria-labelledby="projects-title"
     >
       <SectionLabel index="03">Мои проекты</SectionLabel>
-      <div className={styles.heading}>
+      <div className={styles.heading} data-reveal>
         <h2 id="projects-title">
           Меньше слов.
           <br />

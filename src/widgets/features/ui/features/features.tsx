@@ -18,7 +18,7 @@ export function Features() {
           <ServiceItem key={service.number} {...service} />
         ))}
       </div>
-      <div className={styles.about}>
+      <div className={styles.about} data-reveal>
         <SectionLabel index="02">Подход к работе</SectionLabel>
         <div className={styles.copy}>
           <h2 id="about-title">
@@ -42,7 +42,7 @@ export function Features() {
         <h2>Что можно заказать</h2>
         <div className={styles.offerList}>
           {servicePages.map((service) => (
-            <Link key={service.slug} href={servicePath(service.slug)} className={styles.offer}>
+            <Link key={service.slug} href={servicePath(service.slug)} className={styles.offer} data-reveal>
               <h3>{service.name}<Arrow /></h3>
               <p>{service.summary}</p>
               <span>Подробнее об услуге</span>
@@ -50,7 +50,7 @@ export function Features() {
           ))}
         </div>
       </div>
-      <div className={styles.stack}>
+      <div className={styles.stack} data-reveal>
         <span>МОИ ИНСТРУМЕНТЫ</span>
         <div>
           <span>TypeScript</span>

@@ -23,7 +23,7 @@
 }
 .count {
   align-self: flex-start;
-  font: 10px monospace;
+  font: 500 10px/1.5 var(--font-manrope), Arial, sans-serif;
   padding-top: 8px;
 }
 @media (max-width: 640px) {
