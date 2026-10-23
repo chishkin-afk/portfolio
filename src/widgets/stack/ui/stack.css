@@ -1,0 +1,27 @@
+.stack { padding-block: clamp(36px, 8svh, 90px); border-block: 1px solid var(--line); overflow: hidden; }
+.stack-top, .stack-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.stack-top .eyebrow { color: #747e68; }
+.stack-top button { font-size: 14px; padding: 10px 0 10px 15px; }
+.marquee { overflow: hidden; margin-block: clamp(24px, 4svh, 48px); }
+.marquee-track { width: max-content; display: flex; animation: marquee 38s linear infinite; }
+.marquee-group { display: flex; align-items: center; flex-shrink: 0; }
+.marquee-group > span { display: flex; align-items: center; font-size: clamp(50px, 7.3vw, 110px); letter-spacing: -.045em; font-weight: 450; line-height: 1.4; white-space: nowrap; }
+.marquee-star { font-size: 52px; color: #a1ad92; margin-inline: 48px; display: inline-block; }
+.stack-bottom { color: #747e68; font-size: 14px; }
+.is-paused .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@media (hover: hover) and (pointer: fine) { .marquee:hover .marquee-track { animation-play-state: paused; } }
+@media (max-width: 600px) {
+  .stack-top { align-items: flex-start; gap: 16px; }
+  .stack-top .eyebrow { max-width: 220px; letter-spacing: 0; }
+  .stack-top button { padding-top: 0; }
+  .marquee-star { margin-inline: 30px; font-size: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; width: 100%; }
+  .marquee-group { flex-wrap: wrap; justify-content: center; width: 100%; gap: 12px 24px; padding-inline: 20px; }
+  .marquee-group:nth-child(2) { display: none; }
+  .marquee-group > span { font-size: clamp(26px, 5vw, 60px); }
+  .marquee-star { font-size: 24px; margin-inline: 16px 0; }
+  .stack-top > button { display: none; }
+}

@@ -1,0 +1,24 @@
+/* JavaScript opts sections into motion; content stays visible without it. */
+.scene-ready [data-reveal] {
+  opacity: 0;
+  translate: 0 24px;
+  transition: opacity .7s var(--ease), translate .7s var(--ease), rotate .7s var(--ease), scale .7s var(--ease), clip-path .8s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-scene="about"].scene-ready [data-reveal] { translate: -24px 0; }
+[data-scene="project"].scene-ready .project-card { clip-path: inset(8% 0 0 0 round 8px); scale: .98; }
+[data-scene="services"].scene-ready .service-shell { translate: 0 -26px; rotate: -2deg; }
+[data-scene="services"].scene-ready .service-shell:nth-child(even) { rotate: 2deg; }
+[data-scene="stack"].scene-ready [data-reveal] { translate: 30px 0; }
+[data-scene="process"].scene-ready .process-step { translate: 0 40px; }
+[data-scene="migration"].scene-ready .migration-card { scale: .97; }
+[data-scene="faq"].scene-ready .accordion-item { translate: 22px 0; }
+[data-scene="contact"].scene-ready [data-reveal] { translate: 0 36px; }
+.scene-ready [data-reveal].is-revealed { opacity: 1; translate: 0 0; rotate: 0deg; scale: 1; clip-path: none; }
+[data-scene="project"].scene-ready .project-card.is-revealed { clip-path: inset(0 round 8px); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .scene-ready [data-reveal] { opacity: 1; translate: none; rotate: none; scale: none; clip-path: none; }
+  [data-scroll] { transform: none !important; }
+}

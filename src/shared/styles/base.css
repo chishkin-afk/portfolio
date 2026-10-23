@@ -1,0 +1,68 @@
+:root {
+  --paper: #f4f3ef;
+  --ink: #282b25;
+  --muted: #81877a;
+  --line: #d9dcd2;
+  --accent: #aa4d35;
+  --header-height: 80px;
+  --gutter: clamp(20px, 4vw, 72px);
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --section-space: clamp(56px, 8svh, 112px);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 24px); }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Manrope Variable", Arial, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+main { padding-top: var(--header-height); }
+::selection { background: #b8c4a7; color: #20241c; }
+a { color: inherit; text-decoration: none; }
+button { border: 0; background: none; font: inherit; color: inherit; cursor: pointer; }
+a, button { -webkit-tap-highlight-color: transparent; }
+button:active, .button:active { transform: scale(.98); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+h1, h2, h3, p { margin: 0; }
+h2 { font-size: clamp(34px, 4vw, 62px); line-height: 1.13; letter-spacing: -.045em; font-weight: 450; text-wrap: balance; }
+h3 { font-weight: 550; line-height: 1.3; }
+svg { display: block; }
+small { font-size: 14px; }
+.wrap { width: min(1360px, calc(100% - var(--gutter) * 2)); margin-inline: auto; }
+.section { min-height: calc(100svh - var(--header-height)); padding-block: var(--section-space); display: flex; flex-direction: column; justify-content: center; gap: clamp(32px, 5svh, 64px); }
+.muted { color: var(--muted); }
+.eyebrow { font-size: 14px; letter-spacing: .06em; font-weight: 500; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; z-index: 100; top: 12px; left: 20px; padding: 12px 20px; background: var(--ink); color: white; transform: translateY(-150%); }
+.skip-link:focus { transform: translateY(0); }
+.arrow { display: inline-block; width: 18px; height: 18px; min-width: 18px; flex: 0 0 18px; vertical-align: middle; }
+.arrow--down { rotate: 135deg; }
+.arrow--up { rotate: -45deg; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 52px; padding: 15px 22px; border-radius: 4px; font-size: 14px; font-weight: 550; transition: background .2s ease, transform .2s var(--ease); }
+.button-dark { background: var(--ink); color: var(--paper); }
+.text-link { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; }
+.icon-button { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; transition: background .2s ease, color .2s ease; flex-shrink: 0; }
+.availability { display: inline-flex; align-items: center; gap: 9px; font-size: 14px; }
+.availability i { width: 6px; height: 6px; flex-shrink: 0; background: #718064; border-radius: 50%; box-shadow: 0 0 0 4px #71806412; }
+.section-label { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.section-label > span:first-child { font-size: 20px; color: var(--muted); }
+.section-index { color: var(--muted); margin-left: 12px; }
+.section-heading { display: grid; gap: 26px; }
+.section-heading-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
+.section-heading-row > p { color: var(--muted); font-size: 14px; line-height: 1.8; padding-bottom: 5px; }
+@media (hover: hover) and (pointer: fine) {
+  .button-dark:hover { background: #4b5540; transform: translateY(-2px); }
+  .text-link:hover { color: var(--accent); }
+  .icon-button:hover { background: var(--ink); color: var(--paper); }
+}
+@media (max-width: 900px) {
+  :root { --header-height: 72px; }
+  .section { min-height: auto; }
+  .section-heading-row > p { max-width: 200px; }
+}
+@media (max-width: 600px) {
+  :root { --gutter: 20px; --section-space: 56px; }
+  body { font-size: 14px; }
+  .section-heading-row { display: block; }
+  .section-heading-row > p { margin-top: 20px; max-width: none; }
+  .section-heading-row > p br { display: none; }
+  .section-label { gap: 8px; }
+  .section-index { margin-left: 4px; }
+}

@@ -1,0 +1,18 @@
+.star-experiment { position: relative; width: 100%; text-align: center; }
+.elastic-star { width: min(100%, 30svh, 300px); height: auto; margin-inline: auto; overflow: visible; transform: rotate(-13deg); cursor: crosshair; position: relative; color: var(--ink); transition: color .4s ease; }
+.elastic-star path { transition: stroke-width .8s var(--ease); }
+.star-caption { display: flex; gap: 9px; justify-content: center; align-items: center; margin-top: 16px; color: #737c68; font-size: 14px; }
+.tiny-cross { font-size: 20px; }
+.pause-button { font-size: 14px; color: #737c68; padding: 8px; min-height: 40px; }
+.pause-button > span { font-size: 18px; margin-right: 5px; }
+.star-orbit { position: absolute; width: min(70%, 25svh, 245px); aspect-ratio: 1; left: 50%; top: 8%; translate: -50% 0; border: 1px solid #a6ac9b; border-radius: 50%; opacity: 0; pointer-events: none; transition: opacity .6s ease; }
+.is-breathing .star-orbit { opacity: 1; animation: breathe 8s ease-in-out infinite; }
+.is-breathing .elastic-star { animation: breathe-star 8s ease-in-out infinite; color: #7f8b6d; }
+.is-breathing .elastic-star path { stroke-width: 24; }
+@keyframes breathe { 0%,100% { transform: scale(.78); } 50% { transform: scale(1.22); } }
+@keyframes breathe-star { 0%,100% { transform: rotate(-13deg) scale(.73); } 50% { transform: rotate(47deg) scale(.94); } }
+@media (max-width: 600px) {
+  .elastic-star { width: min(52vw, 220px); }
+  .star-orbit { width: 170px; }
+  .star-caption { margin-top: 12px; }
+}

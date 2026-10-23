@@ -1,0 +1,9 @@
+.faq { display: grid; grid-template-columns: 1fr 1.5fr; gap: 7%; align-items: start; align-content: center; }
+.faq-heading h2 { margin-top: 36px; }
+.faq-heading p { color: #747e68; font-size: 14px; margin-top: 30px; }
+.faq-heading .text-link { margin-top: 8px; }
+@media (max-width: 900px) {
+  .faq { grid-template-columns: 1fr; gap: 36px; }
+  .faq-heading h2 { margin-top: 24px; }
+  .faq-heading p { margin-top: 20px; }
+}

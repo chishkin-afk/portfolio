@@ -1,0 +1,11 @@
+.loading-curtain { position: fixed; inset: 0; z-index: 99; pointer-events: none; animation: loader-fallback 0s 3s forwards; }
+.curtain-panel { position: absolute; inset-inline: 0; height: 50.1%; background: #292d26; color: #e5e9dd; display: flex; padding: 36px var(--gutter); transition: transform .8s cubic-bezier(.76,0,.24,1); }
+.curtain-top { top: 0; align-items: flex-end; font-size: clamp(64px, 13vw, 180px); letter-spacing: -.07em; line-height: .9; animation: curtain-in-top .35s var(--ease); }
+.curtain-bottom { bottom: 0; align-items: flex-start; justify-content: space-between; border-top: 1px solid #535e46; font-size: 14px; animation: curtain-in-bottom .35s var(--ease); }
+.curtain-bottom > span:last-child { font-size: 48px; line-height: 1; color: #b9c6a9; }
+.is-ready .curtain-top { transform: translateY(205%); }
+.is-ready .curtain-bottom { transform: translateY(-205%); }
+@keyframes curtain-in-top { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+@keyframes curtain-in-bottom { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes loader-fallback { to { visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .loading-curtain { display: none; } }
