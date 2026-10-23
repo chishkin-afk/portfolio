@@ -8,9 +8,8 @@
 .marquee-group > span { display: flex; align-items: center; font-size: clamp(50px, 7.3vw, 110px); letter-spacing: -.045em; font-weight: 450; line-height: 1.4; white-space: nowrap; }
 .marquee-star { font-size: 52px; color: #a1ad92; margin-inline: 48px; display: inline-block; }
 .stack-bottom { color: #747e68; font-size: 14px; }
-.is-paused .marquee-track { animation-play-state: paused; }
+.marquee-track[data-paused="true"] { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(-50%); } }
-@media (hover: hover) and (pointer: fine) { .marquee:hover .marquee-track { animation-play-state: paused; } }
 @media (max-width: 600px) {
   .stack-top { align-items: flex-start; gap: 16px; }
   .stack-top .eyebrow { max-width: 220px; letter-spacing: 0; }
